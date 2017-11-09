@@ -54,7 +54,7 @@ $sudo service lightdm stop
 $ps -ef |grep Xorg  # 如果还有Xorg进程，kill掉
 $sudo sh cuda-xxx-xxxx.run --extract=`pwd`
 # 会得到 cuda-linux-xxx.run / cuda-samples-xxx.run / Nvidia-xx-driver.run 三个新文件
-$sudo sh Nvidia-xx-driver.run --no-opengl-libs  # 安装显卡驱动
+$sudo sh Nvidia-xx-driver.run --no-opengl-libs  # 安装显卡驱动, 笔记本上避免循环login问题
 # 如果不报错则安装成功，如果报错 `$cat /var/log/nvidia-install.log` 查看原因
 $nvidia-smi    # 查看显卡驱动安装情况
 $sudo sh cuda-linux-xxx.run  # 安装cuda
