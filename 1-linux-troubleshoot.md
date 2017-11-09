@@ -43,6 +43,7 @@
 ```
 $sudo echo "blacklist nouveau" >>  /etc/modprobe.d/blacklist.conf
 $sudo update-initramfs -u
+$reboot
 ```
 
 3. 按组合键进入并登陆terminal，CTRL+ALT+F2
