@@ -36,3 +36,27 @@
     # 进入ubuntu引导界面
 ```
 ## cuda安装
+
+1. nvidia官方下载cuda-xxx-xxxx.run文件
+
+2. 禁用默认的显卡驱动
+```
+$sudo echo "blacklist nouveau" >>  /etc/modprobe.d/blacklist.conf
+$sudo update-initramfs -u
+```
+
+3. 按组合键进入并登陆terminal，CTRL+ALT+F2
+```
+$sudo su # 切换至root
+$service lightdm stop
+$ps -ef |grep Xorg  # 如果还有Xorg进程，kill掉
+$./cuda-xxx-xxxx.run --extract=`pwd`
+# 会得到 cuda-linux-xxx.run / cuda-samples-xxx.run / Nvidia-xx-driver.run 三个新文件
+$./Nvidia-xx-driver.run # 安装显卡驱动
+# 如果不报错则安装成功，如果报错 `$cat /var/log/nvidia-install.log` 查看原因
+$nvidia-smi    # 查看显卡驱动安装情况
+$./cuda-linux-xxx.run  # 安装cuda
+$./cuda-samples-xxx.run  # 安装cuda-samples，记住安装路径
+$update-initramfs -u
+$reboot
+```
