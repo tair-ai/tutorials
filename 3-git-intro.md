@@ -73,7 +73,7 @@ $git push origin master    # 将代码推送到远端，完成当前所有提�
 $git pull origin master    # 获取远端的更新
 ```
 
-##  单人项目最常用的命令即：
+##  单人项目常用的命令即：
 
 ```
 # 本地
