@@ -116,5 +116,5 @@ $git reset <head-md5>  # 回滚记录到head-md5提交，一般使用commit的�
 
 5. [gitbucket](https://github.com/gitbucket/gitbucket) scala版的git版本管理服务器
 
-
+6. [gitolite](https://github.com/sitaramc/gitolite) 非web式的git服务器
 
