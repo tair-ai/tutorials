@@ -23,9 +23,16 @@
 
 
 ## git用于本地代码历史管理
+
+1. 创建版本库
+
 ```
 $cd path/to/repository
 $git init       # 设定这个目录为git版本库，git会生成一个.git隐藏文件夹
+```
+
+2. 添加跟踪文件，提交一次修改
+```
 $git add -A     # 将目录下的所有文件添加到git的管理功能，-A是all的意思，还可以指定文件，这样只需要跟踪管理指定文件
 $git commit -m 'init or some comment' # 将修改提交成为一次历史，git会产生一次记录，记录时间，修改内容等
 ```
@@ -33,4 +40,7 @@ $git commit -m 'init or some comment' # 将修改提交成为一次历史，git�
 > 上述命令即完成了本地的代码的一次提交，提交一次将产生一次历史，所有的历史记录和更改内容被记录在 .git目录下面
 > 本地代码管理一般用到上述命令
 
-即：创建版本库 `git init` -> 添加跟踪文件  `git add filename.ext`  -> 提交一次形成记录 `git commit -m '说明文字'`
+即：
+
+1. 创建版本库 `git init` (这条命令只需要执行一次) ->  
+2. 添加跟踪文件  `git add filename.ext`  -> 提交一次形成记录 `git commit -m '说明文字'`  
