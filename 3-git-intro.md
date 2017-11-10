@@ -1,18 +1,33 @@
-### Git Intro
+## Git Intro
 
-[Offical Tutorial](https://git-scm.com/book/zh/v1/) https://git-scm.com/book/zh/v1/
+[官方手册](https://git-scm.com/book/zh/v1/) https://git-scm.com/book/zh/v1/
 
-What's git?  -> code management, it recodes your code change, and the project and git management called repository
 
-Features
+### 什么是git？
 
-1. You can exchange the code with other computer using git, and the other computer is called `remote`
-2. You can recode your code change with git, with using `git commit`
+> 一个代码管理工具
+> 我们把用代码以及git管理程序产生的附加文件称为一个版本库
 
-## Using code as a local code management
+### 有什么特点
+
+> 如word等工具，文件编辑后不能保存历史。git用于**编辑历史**的管理记录
+> git是围绕代码编辑历史和多人同时编写代码的管理工具
+
+### 预备知识需求
+
+1. 代码管理
+2. 软件版本
+3. 本机/远端机器 或者服务器 (网络可以连通的其他机器或者服务器)
+4. 操作系统的文件系统
+5. bash的一些命令，注释符号
+
+
+## git用于本地代码历史管理
 ```
 $cd path/to/repository
-$git init
-$git commit -am 'init or some comment' #
-
+$git init       # 是
+$git add -A     # 将目录下的所有文件添加到git的管理功能，-A是all的意思，还可以指定文件，这样只需要跟踪管理指定文件
+$git commit -m 'init or some comment' # 将修改提交成为一次历史，git会产生一次记录，记录时间，修改内容等
 ```
+
+> 上述命令即完成了本地的代码的一次提交，提交一次将产生一次历史，所有的历史记录和更改内容被记录在 .git目录下面
