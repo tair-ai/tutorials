@@ -44,7 +44,7 @@ $git commit -m 'init or some comment' # 将修改提交成为一次历史，git�
 1. 创建版本库 `git init` (这条命令只需要执行一次) ->  
 2. 添加跟踪文件  `git add filename.ext`  -> 提交一次形成记录 `git commit -m '说明文字'`  
 
-### Git和远端 remote (如：github.com)的交互
+## Git和远端 remote (如：github.com)的交互
 
 1. 获取别人的代码
 
@@ -63,4 +63,20 @@ $ls tutorials   # 可以查看到获取的代码版本库
 $cd /path/to/repos
 $git remote add origin https://github.com/tair-ai/test_git.git   # origin为别名，可以随意命名；http换成自己对应的远端地址即可
 $git push origin master    # 将代码推送到远端，完成当前所有提交记录的推送；http格式地址需要输入用户名和密码
+$git pull origin master    # 获取远端的更新
 ```
+
+##  单人项目最常用的命令即：
+
+```
+# 本地
+$git init
+$git add <filename>.<ext>
+$git commit -m 'message'
+
+# 远端
+$git push origin master
+$git pull origin master 
+```
+
+## Git 多人协作，以及分支管理，请常看官方远端文档
