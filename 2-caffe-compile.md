@@ -39,6 +39,12 @@ make: *** [.build_release/cuda/src/caffe/layers/detection_output_layer.o] 错误
 更新g++
 
 ```
-sudo apt-get install gcc-5 g++-5
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
+sudo apt-get install -y software-properties-common  
+sudo apt-get install -y gcc-5 g++-5
+sudo rm /usr/bin/gcc
+sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc  
+sudo rm /usr/bin/g++  
+sudo ln -s /usr/bin/g++-5 /usr/bin/g++  
 ```
