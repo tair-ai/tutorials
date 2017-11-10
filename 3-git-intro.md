@@ -86,7 +86,23 @@ $git push origin master
 $git pull origin master 
 ```
 
-## Git 其他操作请查阅官方文档
+## Git 其他操作请查阅官方文档. 
+
+重要概念以及示例  
+多人或多分支涉及交互较多，遇到问题以官方文档为准
+```
+# 分支
+$git branch develop   # 创建一个分支
+$git checkout develop # 切换到develop分支
+$git branch           # 查看分支情况，当前分支，以及他分支
+$git branch -d develop # 删除develop分支
+$git tag v0.1   # 将当前分支的最新记录tag为v0.1
+
+# 历史，状态，回滚
+$git status # 当前版本库状态
+$git log    # 查看提交记录
+$git reset <head-md5>  # 回滚记录到head-md5提交，一般使用commit的和时间内容区分
+```
 
 ## 高级
 
