@@ -79,4 +79,5 @@ $git push origin master
 $git pull origin master 
 ```
 
-## Git 多人协作，以及分支管理，请常看官方远端文档
+## Git 其他操作请查阅官方文档
+
