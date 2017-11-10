@@ -20,6 +20,13 @@
 3. 本机/服务器 (git将其称之远端)
 4. bash的几条基本命令
 
+## 安装
+
+```
+$sudo apt-get install git          # ubuntu, windows请下载git安装程序，并代开git-bash完成如下命令
+$git config --global user.email "you@example.com"   # 自己的邮箱
+$git config --global user.name "Your Name"          # 自己喜欢的用户名
+```
 
 ## git用于本地代码历史管理
 
