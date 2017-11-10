@@ -59,6 +59,15 @@ $sudo sh Nvidia-xx-driver.run --no-opengl-libs  # 安装显卡驱动, 笔记本�
 $nvidia-smi    # 查看显卡驱动安装情况
 $sudo sh cuda-linux-xxx.run  # 安装cuda
 $sudo sh cuda-samples-xxx.run  # 安装cuda-samples，记住安装路径
-$sudo update-initramfs -u
-$sudo reboot
+$sudo lightdm start
+$nvidia-smi
+$cd /usr/local/cuda/samples/1_Utilities/deviceQuery
+$make
+$./deviceQuery    # 如果输出正常则安装成功
+$sudo su   # 进入 root
+$echo "export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}" >> /etc/profile
+$echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+$echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/cuda.conf
+$ldconfig
+$source /etc/profile
 ```
