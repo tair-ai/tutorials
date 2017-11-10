@@ -106,15 +106,11 @@ $git reset <head-md5>  # 回滚记录到head-md5提交，一般使用commit的�
 
 ## 高级
 
-1. [https://github.com/libgit2](https://github.com/libgit2)  提供了很多git的API封装，便于脚本控制
-
-2. [gitlab](https://github.com/gitlabhq/gitlabhq)  ruby版的git管理服务器
-
-3. [Gogs](https://github.com/gogits/gogs)  go版的git版本管理服务器
-
-4. [Code](https://github.com/douban/code)  python版的git版本管理服务器
-
-5. [gitbucket](https://github.com/gitbucket/gitbucket) scala版的git版本管理服务器
-
-6. [gitolite](https://github.com/sitaramc/gitolite) 非web式的git服务器
+1. [https://github.com/libgit2](https://github.com/libgit2)  提供了很多git的API封装，便于脚本控制  
+2. [gitlab](https://github.com/gitlabhq/gitlabhq)  ruby版的git管理服务器  
+3. [Gogs](https://github.com/gogits/gogs)  go版的git版本管理服务器  
+4. [Code](https://github.com/douban/code)  python版的git版本管理服务器  
+5. [gitbucket](https://github.com/gitbucket/gitbucket) scala版的git版本管理服务器  
+6. [gitolite](https://github.com/sitaramc/gitolite) 非web式的git服务器  
+7. [gitk] `$sudo apt-get install gitk` 图形化git版本树
 
