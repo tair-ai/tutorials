@@ -24,3 +24,21 @@ $mv src/caffe/proto/caffe.pb.h include/caffe/proto
 $cp Makefile.config.example Makefile.config
 $make all
 ```
+
+## Troubleshoot
+
+
+```
+/usr/include/boost/property_tree/detail/json_parser_read.hpp: In constructor ‘boost::property_tree::json_parser::json_grammar<Ptree>::definition<Scanner>::definition(const boost::property_tree::json_parser::json_grammar<Ptree>&)’:
+/usr/include/boost/property_tree/detail/json_parser_read.hpp:257:264: error: ‘type name’ declared as function returning an array
+                 escape
+                                                                                                                                                                                                                                                                        ^
+/usr/include/boost/property_tree/detail/json_parser_read.hpp:257:264: error: ‘type name’ declared as function returning an array
+make: *** [.build_release/cuda/src/caffe/layers/detection_output_layer.o] 错误 1
+```
+更新g++
+
+```
+sudo apt-get install gcc-5 g++-5
+sudo apt-get update
+```
