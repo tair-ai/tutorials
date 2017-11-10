@@ -6,10 +6,11 @@
 ## 安装一依赖库
 
 ```
-$sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev  libhdf5-serial-dev 
-$sudo apt-get install --no-install-recommends libboost-all-dev protobuf-compiler
-$sudo apt-get install libopenblas-dev liblapack-dev libatlas-base-dev
-$sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev libopencv-dev
+$sudo apt-get update
+$sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev  libhdf5-serial-dev 
+$sudo apt-get install -y --no-install-recommends libboost-all-dev protobuf-compiler
+$sudo apt-get install -y libopenblas-dev liblapack-dev libatlas-base-dev
+$sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev libopencv-dev
 ```
 ## 下载caffe并安装
 
