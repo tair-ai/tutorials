@@ -70,7 +70,7 @@ $ls tutorials   # 可以查看到获取的代码版本库
 $cd /path/to/repos
 $git remote add origin https://github.com/tair-ai/test_git.git   # origin为别名，可以随意命名；http换成自己对应的远端地址即可
 $git push origin master    # 将代码推送到远端，完成当前所有提交记录的推送；http格式地址需要输入用户名和密码
-$git pull origin master    # 获取远端的更新
+$git pull origin master    # 获取远端的更新, master为一个分支(branch), 一般情况下master分支最为常见
 ```
 
 ##  单人项目常用的命令即：
@@ -87,4 +87,18 @@ $git pull origin master
 ```
 
 ## Git 其他操作请查阅官方文档
+
+## 高级
+
+1. [https://github.com/libgit2](https://github.com/libgit2)  提供了很多git的API封装，便于脚本控制
+
+2. [gitlab](https://github.com/gitlabhq/gitlabhq)  ruby版的git管理服务器
+
+3. [Gogs](https://github.com/gogits/gogs)  go版的git版本管理服务器
+
+4. [Code](https://github.com/douban/code)  python版的git版本管理服务器
+
+5. [gitbucket](https://github.com/gitbucket/gitbucket) scala版的git版本管理服务器
+
+
 
