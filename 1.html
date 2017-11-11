@@ -1,0 +1,101 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/default.css" rel="stylesheet">
+    <link href="css/github.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1 id="env-trouble-shoot">Env Trouble shoot</h1>
+<h2 id="ubuntu">安装ubuntu</h2>
+<ol>
+<li>检查bios设置 是否开启security boot模式，如果开启需要禁用</li>
+</ol>
+<blockquote>
+<p>否则将会出现Nvidia显卡驱动不能正确安装的情况 (sign kernel)问题</p>
+</blockquote>
+<ol>
+<li>
+<p>ubuntu-16.04 / centos 需要检查 bios 的硬盘将 SATA 换为 AHCI模式</p>
+</li>
+<li>
+<p>如果为SSD + 机械硬盘，SSD原有windows系统情形时，建议压缩ssd 1G出来为linux安装boot</p>
+</li>
+<li>
+<p>安装linux时，尽量将boot安装在ssd的磁盘上</p>
+</li>
+<li>
+<p>cuda-9.0提供的显卡驱动，可以提供给cuda-8.0</p>
+</li>
+</ol>
+<h2 id="grub">Grub修复</h2>
+<ol>
+<li>
+<p>grub支持部分bash命令，如ls等，ls时列出全部磁盘逻辑分区，支持reboot</p>
+</li>
+<li>
+<p>grub修复方法</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>    grub rescue&gt;ls
+    (hd0) (hd0,msdos9) (hd0,msdos8) (hd0,msdos7) (hd0,msdos6) (hd0,msdos5) (hd0,msdos2) (hd0,msdos1)
+    # 依次查看分区设备，确认安装引导的分区
+    grub rescue&gt;ls (hd0,msdos1)
+    # 若出现unknown filesystem字样，则尝试下一个，若为目录则该分区为引导分区
+    # 将该区设置为root, 如机器安装的引导(hd0,msdos8)，则
+    grub rescue&gt;set root=(hd0,msdos8)
+    # 查找grub.cfg所在的路径，该路径为prefix, 如位于/boot/grub下面，则
+    grub rescue&gt;set prefix=(hd0,msdos8)/boot/grub
+    # 查看引导目录，查找.mod文件所在的文件路径，找到normal.mod文件,启动normal启动
+    grub rescue&gt;insmod i386-pc/normal.mod
+    # 启动
+    grub rescue&gt;normal
+    # 进入ubuntu引导界面
+</pre></div>
+
+
+<h2 id="cuda">cuda安装</h2>
+<ol>
+<li>
+<p>nvidia官方下载cuda-xxx-xxxx.run文件</p>
+</li>
+<li>
+<p>禁用默认的显卡驱动</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>$sudo apt-get update
+$sudo apt-get -y install git openssh-server g++ vim
+$sudo echo &quot;blacklist nouveau&quot; &gt;&gt;  /etc/modprobe.d/blacklist.conf
+$sudo update-initramfs -u
+$reboot
+</pre></div>
+
+
+<ol>
+<li>按组合键进入并登陆terminal，CTRL+ALT+F2Explosion </li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="nv">$sudo</span> service lightdm stop
+<span class="nv">$ps</span> -ef |grep Xorg  # 如果还有Xorg进程，kill掉
+<span class="nv">$sudo</span> sh cuda-xxx-xxxx.run --extract=`pwd`
+# 会得到 cuda-linux-xxx.run / cuda-samples-xxx.run / Nvidia-xx-driver.run 三个新文件
+<span class="nv">$sudo</span> sh Nvidia-xx-driver.run --no-opengl-libs  # 安装显卡驱动, 笔记本上避免循环login问题
+# 如果不报错则安装成功，如果报错 `<span class="nv">$cat</span> /var/log/nvidia-install.log` 查看原因
+<span class="nv">$nvidia</span>-smi    # 查看显卡驱动安装情况
+<span class="nv">$sudo</span> sh cuda-linux-xxx.run  # 安装cuda
+<span class="nv">$sudo</span> sh cuda-samples-xxx.run  # 安装cuda-samples，记住安装路径
+<span class="nv">$sudo</span> lightdm start
+<span class="nv">$nvidia</span>-smi
+<span class="nv">$cd</span> /usr/local/cuda/samples/1_Utilities/deviceQuery
+<span class="nv">$make</span>
+$./deviceQuery    # 如果输出正常则安装成功
+<span class="nv">$sudo</span> su   # 进入 root
+<span class="nv">$echo</span> &quot;export PATH=/usr/local/cuda/bin<span class="cp">${</span><span class="n">PATH</span><span class="p">:</span><span class="o">+</span><span class="p">:</span><span class="err">$</span><span class="p">{</span><span class="n">PATH</span><span class="cp">}</span>}&quot; &gt;&gt; /etc/profile
+<span class="nv">$echo</span> &quot;export LD_LIBRARY_PATH=/usr/local/cuda/lib64<span class="cp">${</span><span class="n">LD_LIBRARY_PATH</span><span class="p">:</span><span class="o">+</span><span class="p">:</span><span class="err">$</span><span class="p">{</span><span class="n">LD_LIBRARY_PATH</span><span class="cp">}</span>}&quot;
+<span class="nv">$echo</span> &quot;/usr/local/cuda/lib64&quot; &gt;&gt; /etc/ld.so.conf.d/cuda.conf
+<span class="nv">$ldconfig</span>
+<span class="nv">$source</span> /etc/profile
+</pre></div>
+    </body>
+    </html>
+    
