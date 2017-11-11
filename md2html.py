@@ -13,9 +13,9 @@ def md2html(mdstr):
     <html lang="zh-cn">
     <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/default.css" rel="stylesheet">
-    <link href="css/github.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/default.css" rel="stylesheet">
+    <link href="../css/github.css" rel="stylesheet">
     </head>
     <body>
     %s
