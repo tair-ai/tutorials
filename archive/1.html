@@ -85,8 +85,8 @@ $reboot
 # 会得到 cuda-linux-xxx.run / cuda-samples-xxx.run / Nvidia-xx-driver.run 三个新文件
 <span class="nv">$sudo</span> sh Nvidia-xx-driver.run --no-opengl-libs  # 安装显卡驱动, 笔记本上避免循环login问题
 # 如果不报错则安装成功，如果报错 `<span class="nv">$cat</span> /var/log/nvidia-install.log` 查看原因
-# 笔记本问题(记录)，联想拯救者1060，安装cuda的驱动以后，执行 apt-get install nvidia-375 
-# 再取消禁用nouveau，更新kernel然后reboot既可以(这个问题比较奇怪)
+# 笔记本问题(记录)，联想拯救者1060，16.04安装cuda的驱动以后，执行 apt-get install nvidia-375 
+# 再取消禁用nouveau，更新kernel然后reboot既可以(这个问题比较奇怪), 安装后nvidia-smi 是384.90版本(2017.11)
 <span class="nv">$nvidia</span>-smi    # 查看显卡驱动安装情况
 <span class="nv">$sudo</span> sh cuda-linux-xxx.run  # 安装cuda
 <span class="nv">$sudo</span> sh cuda-samples-xxx.run  # 安装cuda-samples，记住安装路径
