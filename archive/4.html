@@ -1,0 +1,43 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+        <link href="../css/default.css" rel="stylesheet">
+        <link href="../css/github.css" rel="stylesheet">
+        <link href="../css/common.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="md-content">
+    <h2 id="python-toolkits">Python Toolkits</h2>
+<h4 id="pyvenv">Pyvenv</h4>
+<p>使用pyvenv来管理python环境，可以设置多个版本的python
+以安装python3的环境为例</p>
+<p>Mac osx</p>
+<div class="codehilite"><pre><span></span>$brew install python3.6.5
+$cd ~/workspace
+$python3.6 -m venv py36
+$cd py36
+# 启动环境
+$source bin/activate
+(py36)$pip --version
+
+# 关闭环境
+(py36)$deactivate
+$pip --version
+</pre></div>
+
+
+<p>Linux ubuntu</p>
+<div class="codehilite"><pre><span></span>$sudo apt-get update
+$sudo apt-get -y install python3.6
+$cd ~/workspace
+$python3.6 -m venv py36
+$cd py36
+# 启动环境
+$source bin/activate
+(py36)$pip --version
+</pre></div>
+    </div>
+    </body>
+    </html>
+    

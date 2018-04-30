@@ -1,4 +1,4 @@
-# coding: utf-8 
+# coding: utf-8
 
 import markdown
 import os
@@ -18,9 +18,6 @@ def md2html(mdstr):
         <link href="../css/common.css" rel="stylesheet">
     </head>
     <body>
-     <div class="app-header">
-        <h1><a href="http://tair.ai">Tair.AI</a> <a href="http://tair.ai/tutorials/">Tutorials</a></h1>
-    </div>
     <div class="md-content">
     %s
     </div>
@@ -38,12 +35,11 @@ if __name__ == '__main__':
     if len(sys.argv) < 3:
         print('usage: md2html source_filename target_file')
         sys.exit()
-
     infile = open(sys.argv[1],'r')
     md = infile.read()
     infile.close()
 
-    
+
     if os.path.exists(sys.argv[2]):
         os.remove(sys.argv[2])
 
