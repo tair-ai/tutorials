@@ -35,6 +35,15 @@
     grub rescue>normal
     # 进入ubuntu引导界面
 ```
+
+3. 使用boot-repair修复grub
+```
+$sudo add-apt-repository ppa:yannubuntu/boot-repair
+$sudo apt-get update
+$sudo apt-get install -y boot-repair
+$boot-repair
+```
+
 ## cuda安装
 
 1. nvidia官方下载cuda-xxx-xxxx.run文件

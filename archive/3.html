@@ -31,27 +31,24 @@ git是围绕代码编辑历史和多人同时编写代码的管理工具</p>
 <li>bash的几条基本命令</li>
 </ol>
 <h2 id="_3">安装</h2>
-<div class="codehilite"><pre><span></span>$sudo apt-get install git          # ubuntu, windows请下载git安装程序，并代开git-bash完成如下命令
+<pre class="codehilite"><code>$sudo apt-get install git          # ubuntu, windows请下载git安装程序，并代开git-bash完成如下命令
 $git config --global user.email &quot;you@example.com&quot;   # 自己的邮箱
-$git config --global user.name &quot;Your Name&quot;          # 自己喜欢的用户名
-</pre></div>
+$git config --global user.name &quot;Your Name&quot;          # 自己喜欢的用户名</code></pre>
 
 
 <h2 id="git_1">git用于本地代码历史管理</h2>
 <ol>
 <li>创建版本库</li>
 </ol>
-<div class="codehilite"><pre><span></span>$cd path/to/repository
-$git init       # 设定这个目录为git版本库，git会生成一个.git隐藏文件夹
-</pre></div>
+<pre class="codehilite"><code>$cd path/to/repository
+$git init       # 设定这个目录为git版本库，git会生成一个.git隐藏文件夹</code></pre>
 
 
 <ol>
 <li>添加跟踪文件，提交一次修改</li>
 </ol>
-<div class="codehilite"><pre><span></span>$git add -A     # 将目录下的所有文件添加到git的管理功能，-A是all的意思，还可以指定文件，这样只需要跟踪管理指定文件
-$git commit -m &#39;init or some comment&#39; # 将修改提交成为一次历史，git会产生一次记录，记录时间，修改内容等
-</pre></div>
+<pre class="codehilite"><code>$git add -A     # 将目录下的所有文件添加到git的管理功能，-A是all的意思，还可以指定文件，这样只需要跟踪管理指定文件
+$git commit -m 'init or some comment' # 将修改提交成为一次历史，git会产生一次记录，记录时间，修改内容等</code></pre>
 
 
 <blockquote>
@@ -67,41 +64,38 @@ $git commit -m &#39;init or some comment&#39; # 将修改提交成为一次历�
 <ol>
 <li>获取别人的代码</li>
 </ol>
-<div class="codehilite"><pre><span></span>$git clone https://github.com/tair-ai/tutorials.git  # 如获取TAIR.AI的tutorial，把url换成其url即获取其他版本库
-$ls tutorials   # 可以查看到获取的代码版本库
-</pre></div>
+<pre class="codehilite"><code>$git clone https://github.com/tair-ai/tutorials.git  # 如获取TAIR.AI的tutorial，把url换成其url即获取其他版本库
+$ls tutorials   # 可以查看到获取的代码版本库</code></pre>
 
 
 <ol>
 <li>将自己的代码推到远端，如github.com</li>
 </ol>
-<div class="codehilite"><pre><span></span>前提条件： 
+<pre class="codehilite"><code>前提条件： 
 # 1. 首先，需要在远端服务器上新建一个版本库，如github.com添加一个新的repository
 # 2. 然后获取到版本库的http格式的git地址，形如 https://github.com/tair-ai/test_git.git，注意要新建的
-# 3. 本地有一个git管理的仓库，并至少完成了一次记录提交，即执行过如:`git init`, `git add -A`, `git commit -m &#39;xxx&#39;`
+# 3. 本地有一个git管理的仓库，并至少完成了一次记录提交，即执行过如:`git init`, `git add -A`, `git commit -m 'xxx'`
 
 $cd /path/to/repos
 $git remote add origin https://github.com/tair-ai/test_git.git   # origin为别名，可以随意命名；http换成自己对应的远端地址即可
 $git push origin master    # 将代码推送到远端，完成当前所有提交记录的推送；http格式地址需要输入用户名和密码
-$git pull origin master    # 获取远端的更新, master为一个分支(branch), 一般情况下master分支最为常见
-</pre></div>
+$git pull origin master    # 获取远端的更新, master为一个分支(branch), 一般情况下master分支最为常见</code></pre>
 
 
 <h2 id="_4">单人项目常用的命令即：</h2>
-<div class="codehilite"><pre><span></span># 本地
+<pre class="codehilite"><code># 本地
 $git init
 $git add &lt;filename&gt;.&lt;ext&gt;
-$git commit -m &#39;message&#39;
+$git commit -m 'message'
 
 # 远端
 $git push origin master
-$git pull origin master 
-</pre></div>
+$git pull origin master </code></pre>
 
 
 <h2 id="git_2">Git 其他操作请查阅官方文档.</h2>
 <p>重要概念以及常用操作，多人或多分支涉及交互较多，以官方文档为准</p>
-<div class="codehilite"><pre><span></span># 分支
+<pre class="codehilite"><code># 分支
 $git branch develop   # 创建一个分支
 $git checkout develop # 切换到develop分支
 $git branch           # 查看分支情况，当前分支，以及他分支
@@ -111,8 +105,7 @@ $git tag v0.1   # 将当前分支的最新记录tag为v0.1
 # 历史，状态，回滚
 $git status # 当前版本库状态
 $git log    # 查看提交记录
-$git reset &lt;head-md5&gt;  # 回滚记录到head-md5提交，一般使用commit的和时间内容区分
-</pre></div>
+$git reset &lt;head-md5&gt;  # 回滚记录到head-md5提交，一般使用commit的和时间内容区分</code></pre>
 
 
 <h2 id="_5">高级</h2>

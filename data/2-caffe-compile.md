@@ -48,3 +48,49 @@ sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
 sudo rm /usr/bin/g++  
 sudo ln -s /usr/bin/g++-5 /usr/bin/g++  
 ```
+
+2. hdf5错误
+
+```
+./include/caffe/util/hdf5.hpp:6:18: fatal error: hdf5.h: No such file or directory
+```
+
+更改Makefile.config配置  
+```
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include
+```
+
+为  
+```
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
+```
+
+更改Makefile中  
+```
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
+```
+
+为  
+```
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
+```
+
+3. Cuda9.0兼容问题错误如下  
+
+```
+nvcc fatal : Unsupported gpu architecture 'compute_20'
+```
+
+注释掉Makefile.config总compute_20相关部分行   
+```
+CUDA_ARCH := #-gencode arch=compute_20,code=sm_20 \ 
+#-gencode arch=compute_20,code=sm_21 \ 
+-gencode arch=compute_30,code=sm_30 \ 
+-gencode arch=compute_35,code=sm_35 \ 
+-gencode arch=compute_50,code=sm_50 \ 
+-gencode arch=compute_52,code=sm_52 \ 
+-gencode arch=compute_60,code=sm_60 \ 
+-gencode arch=compute_61,code=sm_61 \ 
+-gencode arch=compute_61,code=compute_61
+```
+

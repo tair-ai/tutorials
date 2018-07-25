@@ -16,7 +16,7 @@
 <p>使用pyvenv来管理python环境，可以设置多个版本的python
 以安装python3的环境为例</p>
 <p>Mac osx</p>
-<div class="codehilite"><pre><span></span>$brew install python3.6.5
+<pre class="codehilite"><code>$brew install python3.6.5
 $cd ~/workspace
 $python3.6 -m venv py36
 $cd py36
@@ -26,12 +26,11 @@ $source bin/activate
 
 # 关闭环境
 (py36)$deactivate
-$pip --version
-</pre></div>
+$pip --version</code></pre>
 
 
 <p>Linux ubuntu</p>
-<div class="codehilite"><pre><span></span>$sudo apt-get update
+<pre class="codehilite"><code>$sudo apt-get update
 $sudo apt-get -y install python3.6
 $cd ~/workspace
 $python3.6 -m venv py36
@@ -39,7 +38,12 @@ $cd py36
 # 启动环境
 $source bin/activate
 (py36)$pip --version
-</pre></div>
+# Python 27 env
+$sudo pip install virtualenv
+$virtualenv --no-site-packages py2
+$cd py2
+$source bin/activate
+(py2)$pip --version</code></pre>
     </div>
     </body>
     </html>

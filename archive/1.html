@@ -42,7 +42,7 @@
 <p>grub修复方法</p>
 </li>
 </ol>
-<div class="codehilite"><pre><span></span>    grub rescue&gt;ls
+<pre class="codehilite"><code>    grub rescue&gt;ls
     (hd0) (hd0,msdos9) (hd0,msdos8) (hd0,msdos7) (hd0,msdos6) (hd0,msdos5) (hd0,msdos2) (hd0,msdos1)
     # 依次查看分区设备，确认安装引导的分区
     grub rescue&gt;ls (hd0,msdos1)
@@ -55,8 +55,16 @@
     grub rescue&gt;insmod i386-pc/normal.mod
     # 启动
     grub rescue&gt;normal
-    # 进入ubuntu引导界面
-</pre></div>
+    # 进入ubuntu引导界面</code></pre>
+
+
+<ol>
+<li>使用boot-repair修复grub</li>
+</ol>
+<pre class="codehilite"><code>$sudo add-apt-repository ppa:yannubuntu/boot-repair
+$sudo apt-get update
+$sudo apt-get install -y boot-repair
+$boot-repair</code></pre>
 
 
 <h2 id="cuda">cuda安装</h2>
@@ -68,40 +76,38 @@
 <p>禁用默认的显卡驱动</p>
 </li>
 </ol>
-<div class="codehilite"><pre><span></span>$sudo apt-get update
+<pre class="codehilite"><code>$sudo apt-get update
 $sudo apt-get -y install git openssh-server g++ vim
 $sudo echo &quot;blacklist nouveau&quot; &gt;&gt;  /etc/modprobe.d/blacklist.conf
 $sudo update-initramfs -u
-$reboot
-</pre></div>
+$reboot</code></pre>
 
 
 <ol>
 <li>按组合键进入并登陆terminal，CTRL+ALT+F2Explosion </li>
 </ol>
-<div class="codehilite"><pre><span></span><span class="nv">$sudo</span> service lightdm stop
-<span class="nv">$ps</span> -ef |grep Xorg  # 如果还有Xorg进程，kill掉
-<span class="nv">$sudo</span> sh cuda-xxx-xxxx.run --extract=`pwd`
+<pre class="codehilite"><code>$sudo service lightdm stop
+$ps -ef |grep Xorg  # 如果还有Xorg进程，kill掉
+$sudo sh cuda-xxx-xxxx.run --extract=`pwd`
 # 会得到 cuda-linux-xxx.run / cuda-samples-xxx.run / Nvidia-xx-driver.run 三个新文件
-<span class="nv">$sudo</span> sh Nvidia-xx-driver.run --no-opengl-libs  # 安装显卡驱动, 笔记本上避免循环login问题
-# 如果不报错则安装成功，如果报错 `<span class="nv">$cat</span> /var/log/nvidia-install.log` 查看原因
+$sudo sh Nvidia-xx-driver.run --no-opengl-libs  # 安装显卡驱动, 笔记本上避免循环login问题
+# 如果不报错则安装成功，如果报错 `$cat /var/log/nvidia-install.log` 查看原因
 # 笔记本问题(记录)，联想拯救者1060，16.04安装cuda的驱动以后，执行 apt-get install nvidia-375 
 # 再取消禁用nouveau，更新kernel然后reboot既可以(这个问题比较奇怪), 安装后nvidia-smi 是384.90版本(2017.11)
-<span class="nv">$nvidia</span>-smi    # 查看显卡驱动安装情况
-<span class="nv">$sudo</span> sh cuda-linux-xxx.run  # 安装cuda
-<span class="nv">$sudo</span> sh cuda-samples-xxx.run  # 安装cuda-samples，记住安装路径
-<span class="nv">$sudo</span> lightdm start
-<span class="nv">$nvidia</span>-smi
-<span class="nv">$cd</span> /usr/local/cuda/samples/1_Utilities/deviceQuery
-<span class="nv">$make</span>
+$nvidia-smi    # 查看显卡驱动安装情况
+$sudo sh cuda-linux-xxx.run  # 安装cuda
+$sudo sh cuda-samples-xxx.run  # 安装cuda-samples，记住安装路径
+$sudo lightdm start
+$nvidia-smi
+$cd /usr/local/cuda/samples/1_Utilities/deviceQuery
+$make
 $./deviceQuery    # 如果输出正常则安装成功
-<span class="nv">$sudo</span> su   # 进入 root
-<span class="nv">$echo</span> &quot;export PATH=/usr/local/cuda/bin<span class="cp">${</span><span class="n">PATH</span><span class="p">:</span><span class="o">+</span><span class="p">:</span><span class="err">$</span><span class="p">{</span><span class="n">PATH</span><span class="cp">}</span>}&quot; &gt;&gt; /etc/profile
-<span class="nv">$echo</span> &quot;export LD_LIBRARY_PATH=/usr/local/cuda/lib64<span class="cp">${</span><span class="n">LD_LIBRARY_PATH</span><span class="p">:</span><span class="o">+</span><span class="p">:</span><span class="err">$</span><span class="p">{</span><span class="n">LD_LIBRARY_PATH</span><span class="cp">}</span>}&quot;
-<span class="nv">$echo</span> &quot;/usr/local/cuda/lib64&quot; &gt;&gt; /etc/ld.so.conf.d/cuda.conf
-<span class="nv">$ldconfig</span>
-<span class="nv">$source</span> /etc/profile
-</pre></div>
+$sudo su   # 进入 root
+$echo &quot;export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}&quot; &gt;&gt; /etc/profile
+$echo &quot;export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}&quot;
+$echo &quot;/usr/local/cuda/lib64&quot; &gt;&gt; /etc/ld.so.conf.d/cuda.conf
+$ldconfig
+$source /etc/profile</code></pre>
     </div>
     </body>
     </html>

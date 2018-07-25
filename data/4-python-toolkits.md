@@ -30,4 +30,10 @@ $cd py36
 # 启动环境
 $source bin/activate
 (py36)$pip --version
+# Python 27 env
+$sudo pip install virtualenv
+$virtualenv --no-site-packages py2
+$cd py2
+$source bin/activate
+(py2)$pip --version
 ```
